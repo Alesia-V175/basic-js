@@ -22,16 +22,11 @@ function getSeason(date) {
     "invalid": "Invalid date!",
   }
 
-  if (currentDate === undefined) {
-    return  obj.notPassed;
-  } else if (isNaN(Date.parse(currentDate))) {
-    return  obj.invalid;
+  if (!!!currentDate) {
+    return obj.notPassed;
   }
-
-  try {
-    currentDate.getTime()
-  } catch (error) {
-    throw new Error(obj.invalid)
+  if (!(currentDate instanceof Date) || currentDate.hasOwnProperty('toString')) {
+    throw new Error('Invalid date!');
   }
 
   const currentMonth = currentDate.getMonth();
