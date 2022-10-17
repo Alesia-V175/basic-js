@@ -15,18 +15,18 @@ const { NotImplementedError } = require('../extensions/index.js');
  * the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
  *
  */
-function renameFiles(names) {
+function renameFiles(namesArray) {
   let arr = [];
   
-  names.forEach(item => {
+  namesArray.forEach(item => {
     if (!arr.includes(item)) {
       arr.push(item);
     } else {
       let i = 1;
-      while (arr.includes(item + '(' + i + ')'))  {
+      while (arr.includes(item + "(" + i + ")"))  {
         i++;
       }
-      arr.push(item + '(' + i + ')')
+      arr.push(item + "(" + i + ")")
     }
   })
   return arr;
