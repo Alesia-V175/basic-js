@@ -35,13 +35,13 @@ class VigenereCipheringMachine {
       throw new Error("Incorrect arguments!");
     }
 
-    let resultString = '';
+    let resultString = "";
     let counter = 0;
 
     for (let i = 0; i < currentMessage.length; i++) {
       let letter = currentMessage[i].toUpperCase();
 
-      if (letter.charCodeAt() > 64 && letter.charCodeAt() < 91) {
+      if (letter.charCodeAt > 64 && letter.charCodeAt() < 91) {
         let first = (letter.charCodeAt() - 65);
         let second = (key[counter % key.length].toUpperCase().charCodeAt() - 65);
         let currentLetter = (first + second) % 26;
@@ -73,8 +73,10 @@ class VigenereCipheringMachine {
         let first = (currentEncLetter.charCodeAt() - 65);
         let second = (key[counter % key.length].toUpperCase().charCodeAt() - 65);
         let letter = (first - second + 26) % 26;
+
         resultMessage += String.fromCharCode(letter + 65);
         counter++;
+
       } else {
         resultMessage += currentEncLetter;
       }
